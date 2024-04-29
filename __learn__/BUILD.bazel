@@ -18,7 +18,7 @@ exports_files(["LICENSE"])
 #
 # java_proto_library(
 #   name = "any_java_proto",
-#   deps = ["@com_google_protobuf//:any_proto"],
+#   deps = ["@protobuf//:any_proto"],
 # )
 
 alias(
@@ -78,6 +78,32 @@ alias(
 alias(
   name = "wrappers_proto",
   actual = "//src/google/protobuf:wrappers_proto",
+  visibility = ["//visibility:public"],
+)
+
+# well-known types C++ targets
+
+alias(
+  name = "any_cc_proto",
+  actual = "//src/google/protobuf:any_cc_proto",
+  visibility = ["//visibility:public"],
+)
+
+alias(
+  name = "api_cc_proto",
+  actual = "//src/google/protobuf:api_cc_proto",
+  visibility = ["//visibility:public"],
+)
+
+alias(
+  name = "duration_cc_proto",
+  actual = "//src/google/protobuf:duration_cc_proto",
+  visibility = ["//visibility:public"],
+)
+
+alias(
+  name = "empty_cc_proto",
+  actual = "//src/google/protobuf:empty_cc_proto",
   visibility = ["//visibility:public"],
 )
 
