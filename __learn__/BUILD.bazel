@@ -107,6 +107,42 @@ alias(
   visibility = ["//visibility:public"],
 )
 
+alias(
+  name = "field_mask_cc_proto",
+  actual = "//src/google/protobuf:field_mask_cc_proto",
+  visibility = ["//visibility:public"],
+)
+
+alias(
+  name = "source_context_cc_proto",
+  actual = "//src/google/protobuf:source_context_cc_proto",
+  visibility = ["//visibility:public"],
+)
+
+alias(
+  name = "struct_cc_proto",
+  actual = "//src/google/protobuf:struct_cc_proto",
+  visibility = ["//visibility:public"],
+)
+
+alias(
+  name = "timestamp_cc_proto",
+  actual = "//src/google/protobuf:timestamp_cc_proto",
+  visibility = ["//visibility:public"],
+)
+
+alias(
+  name = "type_cc_proto",
+  actual = "//src/google/protobuf:type_cc_proto",
+  visibility = ["//visibility:public"],
+)
+
+alias(
+  name = "wrappers_cc_proto",
+  actual = "//src/google/protobuf:wrappers_cc_proto",
+  visibility = ["//visibility:public"],
+)
+
 # Source files - aliases to a filegroup, not a 'proto_library' - internal stuff
 alias(
   name = "lite_well_known_protos",
