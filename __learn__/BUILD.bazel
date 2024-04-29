@@ -196,17 +196,6 @@ filegroup(
   visibility = ["//visibility:public"],
 )
 
-internal_ruby_proto_library(
-  name = "well_known_ruby_protos",
-  srcs = [":well_known_protos"],
-  includes = ["src"],
-  default_runtime = "",
-  visibility = [
-    "//conformance:__pkg__",
-    "//ruby:__subpackages__",
-  ],
-)
-
 # Compiler
 alias(
   name = "protoc_lib",
@@ -217,7 +206,22 @@ alias(
 cc_binary(
   name = "protoc",
   copts = COPTS,
-  linkopts = LINK_OPTS + PROTOC_LINK_OPTS,
+  linkopts = LINK_OPTS,
+  visibility = ["//visibility:public"],
+  deps = ["//src/google/protobuf/compiler:protoc_lib"],
+)
+
+cc_binary(
+  name = "protoc_static",
+  copts = COPTS,
+  features = select({
+    # not possible on macOS - there's no static library for lcrt0.o
+    "@platforms//os:osx": [],
+    "//build_defs:config_osx": [],
+    # Have to statically link all C++ libs when crosscompiling
+    "//conditions:default": ["fully_static_link"],
+  }),
+  linkopts = LINK_OPTS,
   visibility = ["//visibility:public"],
   deps = ["//src/google/protobuf/compiler:protoc_lib"],
 )
