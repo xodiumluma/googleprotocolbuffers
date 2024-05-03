@@ -527,3 +527,39 @@ internal_php_proto_library(
     "//php:__subpackages__",
   ],
 )
+
+filegroup(
+  name = "bzl_srcs",
+  srcs = glob(["**/*.bzl"]),
+  visibility = ["//visibility:public"],
+)
+
+########### PACKAGING RULES ###############
+
+# all source distributions have these files
+pkg_files(
+  name = "common_dist_files",
+  srcs = glob(
+    [
+      "*.bzl",
+      "cmake/*.cmake",
+      "cmake/*.in",
+      "editors/*",
+    ],
+    allow_empty = True,
+  ) + [
+    "BUILD.bazel",
+    "CMakeLists.txt",
+    "CONTRIBUTORS.txt",
+    "LICENSE",
+    "README.md",
+    "WORKSPACE",
+    "cmake/README.md",
+    "generate_descriptor_proto.sh",
+    "maven_install.json",
+    "//third_party:BUILD.bazel",
+    "//third_party:zlib.BUILD",
+  ],
+  strip_prefix = strip_prefix.from_root(""),
+  visibility = ["//pkg:__pkg__"],
+)
