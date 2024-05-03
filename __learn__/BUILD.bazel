@@ -500,3 +500,30 @@ internal_objc_proto_library(
     "//objectivec:__subpackages__",
   ],
 )
+
+internal_php_proto_library(
+  name = "test_messages_proto3_php_proto",
+  testonly = 1,
+  srcs = ["//src/google/protobuf:test_messages_proto3.proto"],
+  outs = [
+    "GPBMetadata/TestMessagesProto3.php",
+    "Protobuf_test_messages/Proto3/EnumOnlyProto3.php",
+    "Protobuf_test_messages/Proto3/EnumOnlyProto3/PBBool.php",
+    "Protobuf_test_messages/Proto3/ForeignEnum.php",
+    "Protobuf_test_messages/Proto3/ForeignMessage.php",
+    "Protobuf_test_messages/Proto3/NullHypothesisProto3.php",
+    "Protobuf_test_messages/Proto3/TestAllTypesProto3.php",
+    "Protobuf_test_messages/Proto3/TestAllTypesProto3/AliasedEnum.php",
+    "Protobuf_test_messages/Proto3/TestAllTypesProto3/NestedEnum.php",
+    "Protobuf_test_messages/Proto3/TestAllTypesProto3/NestedMessage.php",
+  ],
+  includes = [
+    "src/google/protobuf", # this has to be first
+    "src",
+  ],
+  proto_deps = [":well_known_protos"],
+  visibility = [
+    "//conformance:__pkg__",
+    "//php:__subpackages__",
+  ],
+)
