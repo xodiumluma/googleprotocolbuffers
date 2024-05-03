@@ -563,3 +563,21 @@ pkg_files(
   strip_prefix = strip_prefix.from_root(""),
   visibility = ["//pkg:__pkg__"],
 )
+
+# Extra C# files
+pkg_files(
+  name = "csharp_dist_files",
+  srcs = [
+    "global.json",
+  ],
+  visibility = ["//pkg:__pkg__"],
+)
+
+# Extra Obj C files
+pkg_files(
+  name = "objectivec_dist_files",
+  srcs = [
+    "Protobuf.podspec",
+  ],
+  visibility = ["//pkg:__pkg__"],
+)
