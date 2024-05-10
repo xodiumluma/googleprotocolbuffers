@@ -22,3 +22,7 @@ build:ubsan --action_env=UBSAN_OPTIONS=halt_on_error=1:print_stacktrace=1
 # Bazel liks with $CC instead of $CXX so this is a workaround
 # https://github.com/bazelbuild/bazel/issues/11122#issuecomment-613746748
 build:ubsan --copt=-fno-sanitize=function --copt=-fno-sanitize=vptr
+
+# @todo - migrate dependencies from WORKSPACE to MODULE.bazel
+# https://github.com/protocolbuffers/protobuf/issues/14313
+common --noenable_bzlmod
